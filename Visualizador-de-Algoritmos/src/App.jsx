@@ -8,7 +8,8 @@ function App() {
   const [array, setArray] = useState([]);
   const [size, setSize] = useState([50]); // ES EL FUTURO Y AHORA ESTÁ DETERMINADO POR EL USUARIO JIJA
   const [time, setTime] = useState([100]);
-  
+  const [indicesComp, setIndicesComp] = useState([])
+
   const generarArray = () => {
     const nArray = [];
     for(let i = 0; i<size; i++){
@@ -18,7 +19,8 @@ function App() {
   }
 
   const controlBubbleSort = async () => {
-    await bubbleSort(array, setArray, time);
+    await bubbleSort(array, setArray, time, setIndicesComp);
+    setIndicesComp([]);
   }
 
   useEffect(() => {
@@ -37,7 +39,7 @@ function App() {
         time={time}
         setTime={setTime} 
       />
-      <Visuales array={array} />
+      <Visuales array={array} indicesComp={indicesComp}/>
     </div>
   )
 }
