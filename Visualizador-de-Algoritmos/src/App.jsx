@@ -6,30 +6,37 @@ import './App.css'
 
 function App() {
   const [array, setArray] = useState([]);
-  const TAM_ARRAY = 30; // En el futuro será determinado por el usuario
-
+  const [size, setSize] = useState([50]); // ES EL FUTURO Y AHORA ESTÁ DETERMINADO POR EL USUARIO JIJA
+  const [time, setTime] = useState([100]);
   
   const generarArray = () => {
     const nArray = [];
-    for(let i = 0; i<TAM_ARRAY; i++){
+    for(let i = 0; i<size; i++){
       nArray.push(Math.floor(Math.random() * 390) + 10);
     }
     setArray(nArray);
   }
 
   const controlBubbleSort = async () => {
-    await bubbleSort(array, setArray, );
+    await bubbleSort(array, setArray, time);
   }
 
   useEffect(() => {
     generarArray();
     console.log("PRELIMINAR BUILD, WE'RE WORKING HARD HERE");},
-     []) // TAM_ARRAY deberá ser el segundo argumento en el futuro ^^
+     [size]) 
 
   return (
     <div className="app-container">
       <h1>Visualizador de Algoritmos</h1>
-      <Controles onGenerate={generarArray} onBubbleSort={controlBubbleSort} />
+      <Controles 
+        onGenerate={generarArray} 
+        onBubbleSort={controlBubbleSort}
+        size={size}
+        setSize={setSize}
+        time={time}
+        setTime={setTime} 
+      />
       <Visuales array={array} />
     </div>
   )
