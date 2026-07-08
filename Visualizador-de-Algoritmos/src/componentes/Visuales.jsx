@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Visuales({array}) {
-    console.log("Arreglo recibido en el Visualizador:", array)
+    //console.log("Arreglo recibido en el Visualizador:", array)
     return (
         <div className="visuales-container">
         {array.map((valor, pos) => (

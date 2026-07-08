@@ -12,7 +12,7 @@ export const bubbleSort = async (array, setArray, tiempo = 50) => {
     let largo = nArray.length;
 
     for(let i = 0; i<largo-1; i++){
-        for(let j = 0; j<largo-1-j; j++){
+        for(let j = 0; j<largo-1-i; j++){
 
             if(nArray[j]>nArray[j+1]){
                 let temp = nArray[j];
