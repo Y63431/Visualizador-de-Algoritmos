@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Visuales from './componentes/Visuales'
 import Controles from './componentes/Controles'
-import { bubbleSort } from './algoritmos/Sorteo'
+import { bubbleSort, selectionSort } from './algoritmos/Sorteo'
 import './App.css'
 
 function App() {
@@ -23,6 +23,11 @@ function App() {
     setIndicesComp([]);
   }
 
+  const controlSelectionSort = async () => {
+    await selectionSort(array, setArray, time, setIndicesComp);
+    setIndicesComp([]);
+  }
+
   useEffect(() => {
     generarArray();
     console.log("PRELIMINAR BUILD, WE'RE WORKING HARD HERE");},
@@ -34,6 +39,7 @@ function App() {
       <Controles 
         onGenerate={generarArray} 
         onBubbleSort={controlBubbleSort}
+        onSelectionSort={controlSelectionSort}
         size={size}
         setSize={setSize}
         time={time}

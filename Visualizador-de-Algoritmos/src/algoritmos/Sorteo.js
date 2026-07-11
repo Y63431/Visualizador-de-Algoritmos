@@ -32,3 +32,39 @@ export const bubbleSort = async (array, setArray, tiempo = 50, setIndicesComp) =
     }
     
 }
+
+export const selectionSort = async (array, setArray, tiempo = 50, setIndicesComp) =>{
+    
+    let nArray = [...array];
+    let largo = nArray.length;
+    
+    
+    {/* En el SelectionSort buscamos al más pequeño y lo colocamos al inicio*/}
+    for(let i = 0; i<largo-1; i++){
+        let indPeque = i;
+        
+        for(let j = i; j<largo; j++){
+            
+            if(setIndicesComp){
+                setIndicesComp([indPeque, j]);
+            }
+            await(sleep(tiempo))
+
+            if(nArray[indPeque]>nArray[j]){
+                indPeque = j;
+            }
+
+        }
+
+        
+        if(indPeque!=i){
+            let temp = nArray[i];
+            nArray[i] = nArray[indPeque];
+            nArray[indPeque] = temp;
+        }
+
+        setArray([...nArray]);
+       
+    }
+
+}

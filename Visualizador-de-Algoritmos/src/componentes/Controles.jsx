@@ -1,12 +1,13 @@
 import React from 'react'
 
-function Controles({onGenerate, onBubbleSort, size, setSize, time, setTime}){
+function Controles({onGenerate, onBubbleSort, onSelectionSort, size, setSize, time, setTime}){
     return ( 
         <div className="panel-controles">
             {/*BOTONES*/} 
             <div className='grupo-botones' style={{ marginBottom: '20px' }}>
                 <button onClick={onGenerate} style={{ marginRight: '10px' }}>Generar Nuevo Arreglo</button>
-                <button onClick={onBubbleSort} >Ordenar con BubbleSort</button>
+                <button onClick={onBubbleSort} style={{ marginRight: '10px' }} >Ordenar con BubbleSort</button>
+                <button onClick={onSelectionSort} style={{ marginRight: '10px' }} >Ordenar con SelectionSort</button>
             </div>
 
             {/*SLIDERS*/} 
