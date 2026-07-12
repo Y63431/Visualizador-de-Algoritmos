@@ -8,7 +8,11 @@ function App() {
   const [array, setArray] = useState([]);
   const [size, setSize] = useState([50]); // ES EL FUTURO Y AHORA ESTÁ DETERMINADO POR EL USUARIO JIJA
   const [time, setTime] = useState([100]);
-  const [indicesComp, setIndicesComp] = useState([])
+  const [colores, setColores] = useState([]); //Si sigue dando problemas podemos inicializarlo con new Array...
+
+  const resetColores = (largo) =>{
+    setColores(new Array(largo).fill('#4caf50'));
+  }
 
   const generarArray = () => {
     const nArray = [];
@@ -16,16 +20,17 @@ function App() {
       nArray.push(Math.floor(Math.random() * 390) + 10);
     }
     setArray(nArray);
+    resetColores(size);
   }
 
   const controlBubbleSort = async () => {
-    await bubbleSort(array, setArray, time, setIndicesComp);
-    setIndicesComp([]);
+    await bubbleSort(array, setArray, time, setColores);
+    resetColores(size);
   }
 
   const controlSelectionSort = async () => {
-    await selectionSort(array, setArray, time, setIndicesComp);
-    setIndicesComp([]);
+    await selectionSort(array, setArray, time, setColores);
+    resetColores(size);
   }
 
   useEffect(() => {
@@ -45,7 +50,7 @@ function App() {
         time={time}
         setTime={setTime} 
       />
-      <Visuales array={array} indicesComp={indicesComp}/>
+      <Visuales array={array} colores={colores}/>
     </div>
   )
 }
