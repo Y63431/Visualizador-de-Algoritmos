@@ -85,3 +85,43 @@ export const selectionSort = async (array, setArray, tiempo = 50, setColores) =>
     }
 
 }
+
+export const insertionSort = async (array, setArray, tiempo = 50, setColores) =>{
+
+    let nArray = [...array];
+    let largo = nArray.length;
+    let nColores = new Array(largo).fill('#4caf50');
+
+    for(let i = 1; i<largo; i++){
+
+        let insertar = nArray[i];
+        let j = i-1;
+
+        nColores[i] = '#ff4d4d';
+        if(setColores){
+            setColores([...nColores]);
+        } 
+        await(sleep(tiempo));
+
+        while(j>=0 && nArray[j]>insertar){
+            nColores[j] = '#4c51af';
+            setColores([...nColores]);
+            await(sleep(tiempo));
+
+            nArray[j+1] = nArray[j];
+            setArray([...nArray]);
+
+
+            nColores[j] = '#4caf50';
+
+            j-=1;
+
+        }
+
+        nColores[i] = '#4caf50';
+
+        nArray[j+1] = insertar;
+        setArray([...nArray]);
+    }
+
+}
