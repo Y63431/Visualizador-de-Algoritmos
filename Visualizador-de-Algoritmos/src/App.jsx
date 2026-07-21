@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Visuales from './componentes/Visuales'
 import Controles from './componentes/Controles'
+import CodeView from './componentes/CodeView'
 import { bubbleSort, selectionSort, insertionSort } from './algoritmos/Sorteo'
 import './App.css'
 
@@ -9,6 +10,8 @@ function App() {
   const [size, setSize] = useState([50]); // ES EL FUTURO Y AHORA ESTÁ DETERMINADO POR EL USUARIO JIJA
   const [time, setTime] = useState([100]);
   const [colores, setColores] = useState([]); //Si sigue dando problemas podemos inicializarlo con new Array...
+  const [mostrarCode, setMostrarCode] = useState(false);
+  const [algoritmoSeleccionado, setAlgoritmo] = useState('bubble');
 
   const resetColores = (largo) =>{
     setColores(new Array(largo).fill('#4caf50'));
@@ -54,9 +57,32 @@ function App() {
         size={size}
         setSize={setSize}
         time={time}
-        setTime={setTime} 
+        setTime={setTime}
+        mostrarCode={mostrarCode}
+        setMostrarCode={setMostrarCode}
+        algoritmoSeleccionado={algoritmoSeleccionado}
+        setAlgoritmo={setAlgoritmo}
       />
-      <Visuales array={array} colores={colores}/>
+
+      <div 
+        className="workspace" 
+        style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'flex-start',
+          gap: '20px',
+          width: '100%'
+        }}
+      >
+        <div style={{ flex: mostrarCode ? '2' : '1', transition: 'all 0.3s ease' }}>
+          <Visuales array={array} colores={colores} />
+        </div>
+
+        {mostrarCode && (
+          <CodeView algoritmo={algoritmoSeleccionado} />
+        )}
+      </div>
+
     </div>
   )
 }

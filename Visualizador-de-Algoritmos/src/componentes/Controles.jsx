@@ -1,14 +1,18 @@
 import React from 'react'
 
-function Controles({onGenerate, onBubbleSort, onSelectionSort, onInsertionSort, size, setSize, time, setTime}){
+function Controles({onGenerate, onBubbleSort, onSelectionSort, onInsertionSort, size, setSize, time, setTime, mostrarCode, setMostrarCode, algoritmoSeleccionado, setAlgoritmo}){
     return ( 
         <div className="panel-controles">
             {/*BOTONES*/} 
             <div className='grupo-botones' style={{ marginBottom: '20px' }}>
-                <button onClick={onGenerate} style={{ marginRight: '10px' }}>Generar Nuevo Arreglo</button>
-                <button onClick={onBubbleSort} style={{ marginRight: '10px' }} >Ordenar con BubbleSort</button>
-                <button onClick={onSelectionSort} style={{ marginRight: '10px' }} >Ordenar con SelectionSort</button>
-                <button onClick={onInsertionSort} style={{marginRight: '10px'}} >Ordenar con InsertionSort</button>
+                <button onClick={onGenerate} style={{ marginRight: '8px' }}>Generar Nuevo Arreglo</button>
+                <button onClick={()=>{setAlgoritmo('bubble'); onBubbleSort();}} style={{ marginRight: '8px' }} >Ordenar con BubbleSort</button>
+                <button onClick={()=>{setAlgoritmo('selection'); onSelectionSort()}} style={{ marginRight: '8px' }} >Ordenar con SelectionSort</button>
+                <button onClick={()=>{setAlgoritmo('insertion'); onInsertionSort()}} style={{marginRight: '8px'}} >Ordenar con InsertionSort</button>
+                <button onClick={()=>{setMostrarCode(!mostrarCode); console.log('mostrar: ', mostrarCode)}} 
+                    style={{backgroundColor: mostrarCode ? '#ffc107' : '#17a2b8', color: '#000', fontWeight: 'bold'}}>
+                    {mostrarCode ? 'Ocultar Código </>' : 'Ver Código </>'}
+                    </button>
             </div>
 
             {/*SLIDERS*/} 
